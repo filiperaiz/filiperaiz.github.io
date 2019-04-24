@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+		<!-- CSS -->
+		<link href="/css/main.css" rel="stylesheet" />
+
+		<!-- Vue Js -->
+		<script type="text/javascript" src="https://unpkg.com/vue"></script>
+
+		<title>Desafio uidev linx</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<section class="logo__box">
+				<img class="logo__picture" :src="logo" alt="" />
+				<h2 class="logo__title">Área de acesso</h2>
+			</section>
+
+			<section class="form__box">
+                <h4 class="form__title">Nova conta</h4>
+                <div class="alerts errors" v-if="errors.length">
+                    <h5>Por favor, corrija o(s) seguinte(s) erro(s):</h5>
+                    <ul>
+                        <li v-for="error in errors">{{ error }}</li>
+                    </ul>
+                </div>
+
+                <div class="alerts success" v-if="success">
+                    <h5>Cadastro realizado com sucesso</h5>
+                </div>
+               
+				<form >
+					<div class="form__group">
+						<label class="form__group-label" for="email">Email</label>
+
+						<div class="form__group-prepend">
+							<i class="fas fa-user"></i>
+						</div>
+
+						<input type="text" class="form__group-input" v-model="email" placeholder="me@example.com" autocomplete="off" />
+					</div>
+
+					<div class="form__group">
+						<label class="form__group-label" for="password">Senha</label>
+
+						<div class="form__group-prepend">
+							<i class="fas fa-lock"></i>
+						</div>
+
+                        <i class="form__group-eyepassword fas" :class="[passwordIcon]" @click="hidePassword = !hidePassword"></i>
+                        
+						<input class="form__group-input"  :type="passwordType" id="password" v-model="password" placeholder="**********" />
+                    </div>
+                    
+					<div class="form__actions">
+						<button  @click="doLogin" v-bind:disabled="!isValid" class="btn" type="submit">Cadastrar</button>
+						<hr class="divisor" />
+						<button class="btn btn-outline" type="submit">Ir para o login
+                                <i class="fas fa-chevron-right"></i>
+                        </button>
+					</div>
+				</form>
+			</section>
+
+			<footer>
+				<p>{{ copyright }}</p>
+			</footer>
+		</div>
+
+		<!-- JavaScript -->
+		<script src="../js/main.js"></script>
+	</body>
+</html>
